@@ -1,0 +1,4 @@
+export enum MutationTypes {
+  SET_CHALLENGE = "SET_CHALLENGE",
+  RESET_CHALLENGE = "RESET_CHALLENGE",
+}
