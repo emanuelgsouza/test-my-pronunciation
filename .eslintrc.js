@@ -28,4 +28,5 @@ module.exports = {
       },
     },
   ],
+  plugins: ["prettier", "jest-dom"],
 };
