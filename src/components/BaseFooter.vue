@@ -1,7 +1,7 @@
 <template>
   <footer class="base-footer">
     <a
-      href="https://github.com/emanuelgsouza/test-my-pronunciation-app"
+      href="https://github.com/emanuelgsouza/test-my-pronunciation"
       title="Visite a página da aplicação no Github"
     >
       <img class="github-logo" src="/img/github.svg" />

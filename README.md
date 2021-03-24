@@ -1,4 +1,4 @@
-# test-my-pronunciation-app
+# test-my-pronunciation
 
 ## Project setup
 ```
