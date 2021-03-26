@@ -1,0 +1,46 @@
+{
+  "EASY": [
+    {
+      "sentence": "I have a dream today!",
+      "author": "Martin Luther King, Jr."
+    },
+    {
+      "sentence": "We shall fight on the beaches",
+      "author": "Winston Churchill"
+    },
+    {
+      "sentence": "Three can keep a secret, if two of them are dead.",
+      "author": "Benjamin Franklin"
+    },
+    {
+      "sentence": "That’s one small step for a man, a giant leap for mankind.",
+      "author": "Neil Armstrong"
+    },
+    {
+      "sentence": "May the Force be with you.",
+      "author": "Star Wars"
+    },
+    {
+      "sentence": "Genius is one percent inspiration and ninety-nine percent perspiration.",
+      "author": "Thomas Edison"
+    }
+  ],
+
+  "MEDIUM": [
+    {
+      "sentence": "And as we walk, we must make the pledge that we shall always march ahead.",
+      "author": "Martin Luther King, Jr."
+    }
+  ],
+
+  "HARD": [
+    {
+      "sentence": "I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.",
+      "author": "Martin Luther King, Jr."
+    },
+    {
+      "sentence": "You can fool all of the people some of the time, and some of the people all of the time, but you can't fool all of the people all of the time.",
+      "author": "Abraham Lincoln"
+    }
+  ]
+}
