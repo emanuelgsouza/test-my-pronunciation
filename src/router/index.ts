@@ -14,10 +14,22 @@ const routes: Array<RouteRecordRaw> = [
         component: HomeComponent,
       },
       {
-        path: "/about",
+        path: "about",
         name: "AboutPage",
         component: () =>
           import(/* webpackChunkName: "about" */ "@/views/About.vue"),
+      },
+      {
+        path: "select",
+        name: "SelectPage",
+        component: () =>
+          import(/* webpackChunkName: "select" */ "@/views/Select.vue"),
+      },
+      {
+        path: "challenge/:uuid",
+        name: "ChallengePage",
+        component: () =>
+          import(/* webpackChunkName: "challenge" */ "@/views/Challenge.vue"),
       },
     ],
   },
