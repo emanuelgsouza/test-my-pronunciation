@@ -31,7 +31,7 @@ export default defineComponent({
 
     handleChallengeClick() {
       this.$router.push({
-        name: "ChallengeSelectPage",
+        name: "SelectPage",
       });
     },
   },
