@@ -1,19 +1,40 @@
 import { ActionTree } from "vuex";
+import uuid from "simple-uuid";
+
 import { ActionTypes } from "./action-types";
 import { MutationTypes } from "./mutation-types";
 import { IRootState } from "@/store/interfaces";
-import { ChallengeLevel } from "@/types";
+import { Challenge, ChallengeLevel } from "@/types";
 import { ChallengeActionsTypes, ChallengeStateTypes } from "./interfaces";
+
+import SENTENCES_DATA from "@/data/sentences.json";
+import { getRandomNumber } from "@/support";
 
 export const actions: ActionTree<ChallengeStateTypes, IRootState> &
   ChallengeActionsTypes = {
-  [ActionTypes.BUILD_CHALLENGE]({ commit }, payload: ChallengeLevel): void {
-    commit(MutationTypes.SET_CHALLENGE, {
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      level: payload,
-      text: "",
-      uuid: "",
+  [ActionTypes.BUILD_CHALLENGE](
+    { commit },
+    payload: ChallengeLevel
+  ): Promise<Challenge> {
+    return new Promise((resolve) => {
+      const sentences = SENTENCES_DATA[payload];
+      const sentenceIndex = getRandomNumber(sentences.length);
+      const currentSentence = sentences[sentenceIndex];
+
+      const challenge: Challenge = {
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        level: payload,
+        sentence: {
+          value: currentSentence.sentence,
+          author: currentSentence.author,
+        },
+        uuid: uuid(),
+      };
+
+      commit(MutationTypes.SET_CHALLENGE, challenge);
+
+      resolve(challenge);
     });
   },
 };

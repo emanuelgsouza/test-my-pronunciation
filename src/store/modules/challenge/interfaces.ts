@@ -34,7 +34,7 @@ export interface ChallengeActionsTypes {
   [ChallengeActionEnumTypes.BUILD_CHALLENGE](
     { commit }: AugmentedActionContext,
     payload: ChallengeLevel
-  ): void;
+  ): Promise<Challenge>;
 }
 
 // module type
