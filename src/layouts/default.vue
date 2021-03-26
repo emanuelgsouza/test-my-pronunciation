@@ -1,7 +1,9 @@
 <template>
-  <div class="app-container">
+  <div class="app">
     <BaseHeader />
-    <RouterView />
+    <div class="container">
+      <RouterView />
+    </div>
     <BaseFooter />
   </div>
 </template>
@@ -23,12 +25,22 @@ body {
   @apply bg-light text-black;
 }
 
-.app-container {
+.app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   @apply p-5;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @apply py-4;
 }
 </style>

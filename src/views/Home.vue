@@ -1,22 +1,20 @@
 <template>
-  <div class="container">
-    <img class="base-logo" src="/img/logo.svg" />
+  <img class="base-logo" src="/img/logo.svg" />
 
-    <h1 class="font-bold text-2xl mb-8">Teste a minha pronúncia!</h1>
+  <h1 class="font-bold text-2xl mb-8">Teste a minha pronúncia!</h1>
 
-    <BaseButton
-      label="Começar desafio"
-      variant="primary"
-      class="mb-6"
-      @click="handleChallengeClick"
-    />
+  <BaseButton
+    label="Começar desafio"
+    variant="primary"
+    class="mb-6"
+    @click="handleChallengeClick"
+  />
 
-    <BaseButton
-      label="Sobre o aplicativo"
-      variant="ghost"
-      @click="handleAboutClick"
-    />
-  </div>
+  <BaseButton
+    label="Sobre o aplicativo"
+    variant="ghost"
+    @click="handleAboutClick"
+  />
 </template>
 
 <script lang="ts">
@@ -32,24 +30,16 @@ export default defineComponent({
     },
 
     handleChallengeClick() {
-      this.$router.push("challenge/choose");
+      this.$router.push({
+        name: "ChallengeSelectPage",
+      });
     },
   },
 });
 </script>
 
 <style>
-.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @apply py-4;
-}
-
-.container .base-logo {
+.base-logo {
   width: 150px;
   height: 150px;
 
