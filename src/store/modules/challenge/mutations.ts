@@ -13,7 +13,10 @@ export const mutations: MutationTree<ChallengeStateTypes> = {
       createdAt: null,
       updatedAt: null,
       level: null,
-      text: null,
+      sentence: {
+        author: "",
+        value: "",
+      },
       uuid: null,
     };
   },

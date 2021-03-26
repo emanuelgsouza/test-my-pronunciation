@@ -6,6 +6,9 @@ export const state: ChallengeStateTypes = {
     updatedAt: null,
     uuid: null,
     level: null,
-    text: null,
+    sentence: {
+      author: "",
+      value: "",
+    },
   },
 };

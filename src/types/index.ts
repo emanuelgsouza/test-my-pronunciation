@@ -4,9 +4,14 @@ export enum ChallengeLevel {
   HARD = "HARD",
 }
 
+export interface Sentence {
+  author: string | null;
+  value: string | null;
+}
+
 export interface Challenge {
   uuid: string | null;
-  text: string | null;
+  sentence: Sentence;
   createdAt: Date | null;
   updatedAt: Date | null;
   level: ChallengeLevel | null;
