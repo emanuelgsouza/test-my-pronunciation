@@ -10,5 +10,9 @@ export const state: ChallengeStateTypes = {
       author: "",
       value: "",
     },
+    result: {
+      transcript: "",
+      duration: 0,
+    },
   },
 };

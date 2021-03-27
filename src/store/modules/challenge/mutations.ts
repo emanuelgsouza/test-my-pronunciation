@@ -18,6 +18,10 @@ export const mutations: MutationTree<ChallengeStateTypes> = {
         value: "",
       },
       uuid: null,
+      result: {
+        transcript: "",
+        duration: 0,
+      },
     };
   },
 };

@@ -9,10 +9,16 @@ export interface Sentence {
   value: string | null;
 }
 
+export interface ChallengeResult {
+  transcript: string | null;
+  duration: number | null;
+}
+
 export interface Challenge {
   uuid: string | null;
   sentence: Sentence;
   createdAt: Date | null;
   updatedAt: Date | null;
   level: ChallengeLevel | null;
+  result: ChallengeResult;
 }
