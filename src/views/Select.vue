@@ -41,7 +41,6 @@ export default defineComponent({
     };
 
     const createEasyChallenge = () => {
-      console.log("easy");
       createChallenge(ChallengeLevel.EASY);
     };
 
