@@ -31,6 +31,12 @@ const routes: Array<RouteRecordRaw> = [
         component: () =>
           import(/* webpackChunkName: "challenge" */ "@/views/Challenge.vue"),
       },
+      {
+        path: "result/:uuid",
+        name: "ResultPage",
+        component: () =>
+          import(/* webpackChunkName: "result" */ "@/views/Result.vue"),
+      },
     ],
   },
 ];
