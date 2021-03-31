@@ -1,3 +1,4 @@
 export enum ActionTypes {
   BUILD_CHALLENGE = "BUILD_CHALLENGE",
+  SAVE_RESULT = "SAVE_RESULT",
 }

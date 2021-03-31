@@ -24,4 +24,10 @@ export const mutations: MutationTree<ChallengeStateTypes> = {
       },
     };
   },
+
+  [MutationTypes.SAVE_CHALLENGE](state, payload: Challenge) {
+    if (payload.uuid) {
+      state.challenges[payload.uuid] = payload;
+    }
+  },
 };

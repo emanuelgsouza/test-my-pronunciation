@@ -1,6 +1,8 @@
 import { ChallengeStateTypes } from "./interfaces";
 
 export const state: ChallengeStateTypes = {
+  challenges: {},
+
   currentChallenge: {
     createdAt: null,
     updatedAt: null,
