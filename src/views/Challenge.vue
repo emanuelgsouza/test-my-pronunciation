@@ -56,9 +56,12 @@ import { useStore } from "@/store";
 import { computed, defineComponent, onMounted, Ref, ref } from "vue";
 import { useRouter } from "vue-router";
 
+// TODO: may we can use the timer logic as a hook
+// something like that const [timer, start, stop] = useTimer()
 import BaseTimer from "@/components/BaseTimer.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import VoiceRecognition from "@/support/voice-recognization";
+import { ActionTypes } from "@/store/modules/challenge/action-types";
 
 export default defineComponent({
   name: "ChallengeView",
@@ -89,6 +92,21 @@ export default defineComponent({
     const isRecording = ref(false);
     const hasRecorded = ref(false);
 
+    const processingRecording = async (transcript: string) => {
+      return store
+        .dispatch(ActionTypes.SAVE_RESULT, {
+          transcript,
+          duration: timer.value.timer,
+        })
+        .then(() => {
+          finishRecording();
+
+          router.push({
+            name: "ResultPage",
+          });
+        });
+    };
+
     const startRecording = () => {
       isRecording.value = true;
       hasRecorded.value = false;
@@ -98,10 +116,7 @@ export default defineComponent({
 
       voiceRecognization
         .start()
-        .then((transcript) => {
-          console.log(transcript);
-          finishRecording();
-        })
+        .then(processingRecording)
         .catch((err) => {
           console.log(err);
         });
