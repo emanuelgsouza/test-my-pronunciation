@@ -100,10 +100,6 @@ export default defineComponent({
         })
         .then(() => {
           finishRecording();
-
-          router.push({
-            name: "ResultPage",
-          });
         });
     };
 
@@ -136,7 +132,12 @@ export default defineComponent({
     };
 
     const checkRecording = () => {
-      console.log("check");
+      router.push({
+        name: "ResultPage",
+        params: {
+          uuid: currentChallenge.value.uuid || "",
+        },
+      });
     };
 
     // hooks
