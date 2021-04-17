@@ -14,12 +14,13 @@ type ComponentProps = {
 export default defineComponent({
   name: "ResultIllustration",
 
-  rate: {
-    type: Number,
-    default: 0,
+  props: {
+    rate: {
+      type: Number,
+      default: 0,
+    },
   },
 
-  // TODO: make this more intelligent
   setup(props: ComponentProps) {
     const illustrationPath = computed(() => {
       if (isGood(props.rate)) {
