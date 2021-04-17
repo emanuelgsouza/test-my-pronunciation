@@ -1,5 +1,5 @@
 <template>
-  <img src="@/assets/illustrations/sad.svg" alt="" />
+  <img :src="illustrationPath" alt="" />
 </template>
 
 <script lang="ts">
@@ -23,14 +23,14 @@ export default defineComponent({
   setup(props: ComponentProps) {
     const illustrationPath = computed(() => {
       if (isGood(props.rate)) {
-        return "../assets/illustrations/congrats.svg";
+        return require("@/assets/illustrations/congrats.svg");
       }
 
       if (isAverage(props.rate)) {
-        return "../assets/illustrations/almost-there.svg";
+        return require("@/assets/illustrations/almost-there.svg");
       }
 
-      return "../assets/illustrations/sad.svg";
+      return require("@/assets/illustrations/sad.svg");
     });
 
     return {
