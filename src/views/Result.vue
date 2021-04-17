@@ -22,7 +22,7 @@
   <BaseButton label="Gravar novamente" variant="ghost" @click="tryAgain" />
 </template>
 
-<script>
+<script lang="ts">
 import { computed, defineComponent, ref } from "vue";
 
 import ResultIllustration from "@/components/ResultIllustration.vue";
@@ -42,7 +42,7 @@ export default defineComponent({
 
   // TODO: implement logic to get result from the stores's challenges object
   setup() {
-    // implement logic to get by using the uuid
+    // TODO: implement logic to get by using the uuid
     const store = useStore();
     const router = useRouter();
 
@@ -53,7 +53,10 @@ export default defineComponent({
     const originalText = ref(currentChallenge.value.sentence.value);
     const transcript = ref(currentChallenge.value.result.transcript);
 
-    const computedRate = calculateRate(originalText, transcript);
+    const computedRate = calculateRate(
+      originalText.value || "",
+      transcript.value || ""
+    );
 
     const computedPercent = computed(() => computedRate * 100);
 
@@ -79,7 +82,7 @@ export default defineComponent({
       router.push({
         name: "ChallengePage",
         params: {
-          uuid: currentChallenge.value.uuid,
+          uuid: currentChallenge.value.uuid || "",
         },
       });
     };

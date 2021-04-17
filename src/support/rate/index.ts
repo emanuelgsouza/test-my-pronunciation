@@ -1,3 +1,6 @@
+import { pairDilceCompare } from "./algorithms";
+import { AvailableAlgoritms } from "./algorithms/interfaces";
+
 interface RateComputed {
   (rate: number): boolean;
 }
@@ -5,8 +8,13 @@ interface RateComputed {
 // TODO: implement the correct logic
 export const calculateRate = (
   originalText: string,
-  transcript: string
+  transcript: string,
+  algorithm: keyof typeof AvailableAlgoritms = "PAIR_DILCE"
 ): number => {
+  if (algorithm === AvailableAlgoritms.PAIR_DILCE) {
+    return pairDilceCompare(originalText, transcript);
+  }
+
   return 0;
 };
 
