@@ -1,4 +1,5 @@
 import { InjectionKey } from "vue";
+import createPersistedState from "vuex-persistedstate";
 import {
   CommitOptions,
   DispatchOptions,
@@ -50,6 +51,7 @@ export interface BaseStore extends Store<StoreModules> {
 
 export const store = createStore<StoreModules>({
   modules,
+  plugins: [createPersistedState()],
 });
 
 export const key: InjectionKey<BaseStore> = Symbol();
