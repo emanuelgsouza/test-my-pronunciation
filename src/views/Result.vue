@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 
 import ResultIllustration from "@/components/ResultIllustration.vue";
 import BaseButton from "@/components/BaseButton.vue";
@@ -40,15 +40,30 @@ export default defineComponent({
     ResultIllustration,
   },
 
-  // TODO: implement logic to get result from the stores's challenges object
   setup() {
-    // TODO: implement logic to get by using the uuid
     const store = useStore();
     const router = useRouter();
 
+    const routeUuid = router.currentRoute.value.params.uuid as string;
+
     const currentChallenge = computed(
-      () => store.state.challenge.currentChallenge
+      () =>
+        store.state.challenge.challenges[routeUuid] || {
+          sentence: {
+            value: "",
+          },
+          result: {
+            transcript: "",
+          },
+        }
     );
+
+    onMounted(() => {
+      // TODO: improve this condition
+      if (currentChallenge.value.sentence.value === "") {
+        router.push({ name: "HomePage" });
+      }
+    });
 
     const originalText = ref(currentChallenge.value.sentence.value);
     const transcript = ref(currentChallenge.value.result.transcript);

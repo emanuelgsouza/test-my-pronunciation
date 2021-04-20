@@ -4,7 +4,7 @@ import uuid from "simple-uuid";
 import { ActionTypes } from "./action-types";
 import { MutationTypes } from "./mutation-types";
 import { IRootState } from "@/store/interfaces";
-import { Challenge, ChallengeLevel, ChallengeResult } from "@/types";
+import { Challenge, ChallengeLevel } from "@/types";
 import { ChallengeActionsTypes, ChallengeStateTypes } from "./interfaces";
 
 import SENTENCES_DATA from "@/data/sentences.json";
@@ -36,26 +36,21 @@ export const actions: ActionTree<ChallengeStateTypes, IRootState> &
         },
       };
 
-      commit(MutationTypes.SET_CHALLENGE, challenge);
+      commit(MutationTypes.SAVE_CHALLENGE, challenge);
 
       resolve(challenge);
     });
   },
 
-  // TODO: refactor to not only include in the currentChallenge,
-  // but add in the state.challenges
   [ActionTypes.SAVE_RESULT](
-    { commit, state },
-    payload: ChallengeResult
+    { commit },
+    payload: Challenge
   ): Promise<Challenge> {
     return new Promise((resolve) => {
       const challenge: Challenge = {
-        ...state.currentChallenge,
+        ...payload,
         updatedAt: new Date(),
-        result: payload,
       };
-
-      commit(MutationTypes.SET_CHALLENGE, challenge);
 
       commit(MutationTypes.SAVE_CHALLENGE, challenge);
 

@@ -78,8 +78,10 @@ export default defineComponent({
     const timer: Ref<typeof BaseTimer> = ref(BaseTimer);
 
     // vuex challenge module
+    const routeUuid = router.currentRoute.value.params.uuid as string;
+
     const currentChallenge = computed(
-      () => store.state.challenge.currentChallenge
+      () => store.state.challenge.challenges[routeUuid]
     );
 
     const hasChallenge = computed(() => store.getters.hasChallenge);
@@ -95,8 +97,11 @@ export default defineComponent({
     const processingRecording = async (transcript: string) => {
       return store
         .dispatch(ActionTypes.SAVE_RESULT, {
-          transcript,
-          duration: timer.value.timer,
+          ...currentChallenge.value,
+          result: {
+            transcript,
+            duration: timer.value.timer,
+          },
         })
         .then(() => {
           finishRecording();

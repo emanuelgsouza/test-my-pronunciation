@@ -2,30 +2,21 @@ import { Store as VuexStore, ActionContext } from "vuex";
 
 import { ActionTypes as ChallengeActionEnumTypes } from "./action-types";
 import { MutationTypes as ChallengeMutationTypes } from "./mutation-types";
-import {
-  Challenge,
-  ChallengeLevel,
-  ChallengeMap,
-  ChallengeResult,
-} from "@/types";
+import { Challenge, ChallengeLevel, ChallengeMap } from "@/types";
 import { IRootState } from "@/store/interfaces";
 
 // state type
 export interface ChallengeStateTypes {
-  currentChallenge: Challenge;
   challenges: ChallengeMap;
 }
 
 // getters type
 export interface ChallengeGettersTypes {
   hasChallenge(state: ChallengeStateTypes): boolean;
-  currentChallengeLevel(state: ChallengeStateTypes): ChallengeLevel | null;
 }
 
 // mutations type
 export type ChallengeMutationsTypes<S = ChallengeStateTypes> = {
-  [ChallengeMutationTypes.SET_CHALLENGE](state: S, payload: Challenge): void;
-  [ChallengeMutationTypes.RESET_CHALLENGE](state: S): void;
   [ChallengeMutationTypes.SAVE_CHALLENGE](state: S, payload: Challenge): void;
 };
 
@@ -45,7 +36,7 @@ export interface ChallengeActionsTypes {
 
   [ChallengeActionEnumTypes.SAVE_RESULT](
     { commit, state }: AugmentedActionContext,
-    payload: ChallengeResult
+    payload: Challenge
   ): Promise<Challenge>;
 }
 
