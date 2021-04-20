@@ -2,13 +2,18 @@ import { Store as VuexStore, ActionContext } from "vuex";
 
 import { ActionTypes as ChallengeActionEnumTypes } from "./action-types";
 import { MutationTypes as ChallengeMutationTypes } from "./mutation-types";
-import { Challenge, ChallengeLevel, ChallengeResult } from "@/types";
+import {
+  Challenge,
+  ChallengeLevel,
+  ChallengeMap,
+  ChallengeResult,
+} from "@/types";
 import { IRootState } from "@/store/interfaces";
 
 // state type
 export interface ChallengeStateTypes {
   currentChallenge: Challenge;
-  challenges: Record<string, Challenge>;
+  challenges: ChallengeMap;
 }
 
 // getters type

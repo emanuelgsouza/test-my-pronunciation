@@ -22,3 +22,5 @@ export interface Challenge {
   level: ChallengeLevel | null;
   result: ChallengeResult;
 }
+
+export type ChallengeMap = Record<string, Challenge>;
