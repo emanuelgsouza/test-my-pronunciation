@@ -8,7 +8,7 @@
       Agora grave sua voz lendo a frase abaixo
     </p>
 
-    <BaseTimer ref="timer" class="text-2xl mt-16" />
+    <span class="text-2xl mt-16">{{ computedTimer }}</span>
 
     <p class="text-center my-20">{{ currentChallengeText }}</p>
 
@@ -53,29 +53,30 @@
 
 <script lang="ts">
 import { useStore } from "@/store";
-import { computed, defineComponent, onMounted, Ref, ref } from "vue";
+import { computed, defineComponent, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
 // TODO: may we can use the timer logic as a hook
 // something like that const [timer, start, stop] = useTimer()
-import BaseTimer from "@/components/BaseTimer.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import VoiceRecognition from "@/support/voice-recognization";
 import { ActionTypes } from "@/store/modules/challenge/action-types";
+import { formatTimer, useTimer } from "@/support";
 
 export default defineComponent({
   name: "ChallengeView",
 
-  components: { BaseTimer, BaseButton },
+  components: { BaseButton },
 
   setup() {
     const store = useStore();
     const router = useRouter();
+    const [timer, startTimer, stopTimer] = useTimer();
 
     const voiceRecognization = new VoiceRecognition();
 
     // you can use the component as ref in this case
-    const timer: Ref<typeof BaseTimer> = ref(BaseTimer);
+    // const timer: Ref<typeof BaseTimer> = ref(BaseTimer);
 
     // vuex challenge module
     const routeUuid = router.currentRoute.value.params.uuid as string;
@@ -100,7 +101,7 @@ export default defineComponent({
           ...currentChallenge.value,
           result: {
             transcript,
-            duration: timer.value.timer,
+            duration: timer.value,
           },
         })
         .then(() => {
@@ -113,7 +114,7 @@ export default defineComponent({
       hasRecorded.value = false;
 
       // you can access the component instance using .value
-      timer.value.startTimer();
+      startTimer();
 
       voiceRecognization
         .start()
@@ -127,7 +128,7 @@ export default defineComponent({
       isRecording.value = false;
       hasRecorded.value = true;
 
-      timer.value.stopTimer();
+      stopTimer();
 
       voiceRecognization.stop();
     };
@@ -163,6 +164,7 @@ export default defineComponent({
 
       // computeds
       hasChallenge,
+      computedTimer: computed(() => formatTimer(timer.value)),
       currentChallengeText,
       currentChallenge,
 
