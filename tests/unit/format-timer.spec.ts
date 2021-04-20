@@ -1,4 +1,4 @@
-import { formatTimer } from "@/support";
+import { formatTimer } from "@/support/timers";
 
 describe("Test formatTimer function", () => {
   test("formatTimer() should be return '00:00'", () => {
