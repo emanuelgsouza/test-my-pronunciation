@@ -56,8 +56,6 @@ import { useStore } from "@/store";
 import { computed, defineComponent, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
-// TODO: may we can use the timer logic as a hook
-// something like that const [timer, start, stop] = useTimer()
 import BaseButton from "@/components/BaseButton.vue";
 import VoiceRecognition from "@/support/voice-recognization";
 import { ActionTypes } from "@/store/modules/challenge/action-types";
@@ -74,9 +72,6 @@ export default defineComponent({
     const [timer, startTimer, stopTimer] = useTimer();
 
     const voiceRecognization = new VoiceRecognition();
-
-    // you can use the component as ref in this case
-    // const timer: Ref<typeof BaseTimer> = ref(BaseTimer);
 
     // vuex challenge module
     const routeUuid = router.currentRoute.value.params.uuid as string;
