@@ -5,7 +5,6 @@ interface RateComputed {
   (rate: number): boolean;
 }
 
-// TODO: implement the correct logic
 export const calculateRate = (
   originalText: string,
   transcript: string,
