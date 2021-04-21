@@ -7,9 +7,7 @@ import { computed, defineComponent } from "vue";
 
 import { isAverage, isGood } from "@/support";
 
-type ComponentProps = {
-  rate: number;
-};
+import type { ResultIllustrationProps } from "./types";
 
 export default defineComponent({
   name: "ResultIllustration",
@@ -21,20 +19,25 @@ export default defineComponent({
     },
   },
 
-  setup(props: ComponentProps) {
-    const illustrationPath = computed(() => {
+  setup(props: ResultIllustrationProps) {
+    const illustrationSvg = computed(() => {
       if (isGood(props.rate)) {
-        return require("@/assets/illustrations/congrats.svg");
+        return "congrats.svg";
       }
 
       if (isAverage(props.rate)) {
-        return require("@/assets/illustrations/almost-there.svg");
+        return "almost-there.svg";
       }
 
-      return require("@/assets/illustrations/sad.svg");
+      return "sad.svg";
+    });
+
+    const illustrationPath = computed(() => {
+      return require(`@/assets/illustrations/${illustrationSvg.value}`);
     });
 
     return {
+      illustrationSvg,
       illustrationPath,
     };
   },

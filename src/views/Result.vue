@@ -25,7 +25,7 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref } from "vue";
 
-import ResultIllustration from "@/components/ResultIllustration.vue";
+import ResultIllustration from "@/components/ResultIllustration/index.vue";
 import BaseButton from "@/components/BaseButton.vue";
 
 import { useStore } from "@/store";
