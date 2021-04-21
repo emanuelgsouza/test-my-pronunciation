@@ -23,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
         path: "select",
         name: "SelectPage",
         component: () =>
-          import(/* webpackChunkName: "select" */ "@/views/Select.vue"),
+          import(/* webpackChunkName: "select" */ "@/views/Select/index.vue"),
       },
       {
         path: "challenge/:uuid",

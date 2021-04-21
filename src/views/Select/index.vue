@@ -1,7 +1,7 @@
 <template>
   <p class="font-bold text-2xl mb-8">Frases...</p>
 
-  <BaseButton label="Ingles" variant="ghost" disabled />
+  <BaseButton label="Inglês" variant="ghost" disabled />
 
   <p class="font-bold text-2xl my-8">Sendo o nível...</p>
 
