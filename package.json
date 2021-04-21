@@ -46,6 +46,7 @@
     "lint-staged": "^9.5.0",
     "postcss": "^7",
     "prettier": "^2.2.1",
+    "speech-recognition-mock": "^0.0.9",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "~4.1.5",
     "vue-jest": "^5.0.0-0"
