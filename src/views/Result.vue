@@ -1,17 +1,21 @@
 <template>
-  <p class="font-bold text-xl">{{ computedTitle }}</p>
+  <h1 class="font-bold text-xl">
+    {{ computedTitle }}
+  </h1>
 
   <ResultIllustration class="my-10 mx-auto" :rate="computedRate" />
 
-  <p class="text-2xl mb-10">{{ computedPercent }}% de acerto!</p>
+  <p class="text-2xl mb-10" data-testid="result-rate">
+    {{ computedPercent }}% de acerto!
+  </p>
 
   <p class="font-bold text-xl">Do texto que propomos...</p>
 
-  <p class="my-10">{{ originalText }}</p>
+  <p class="my-10" data-testid="original-text">{{ originalText }}</p>
 
   <p class="font-bold text-xl">Você falou....</p>
 
-  <p class="my-10">{{ transcript }}</p>
+  <p class="my-10" data-testid="transcript-text">{{ transcript }}</p>
 
   <BaseButton
     class="mb-6"
